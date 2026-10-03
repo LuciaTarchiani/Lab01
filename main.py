@@ -59,5 +59,9 @@ lista_giocatori = leggi_punti("punti.txt")
 lista_giocatori.append(nuovo)
 
 #ordiniamo la lista di giocatori
-lista_giocatori.sort(key=operator.itemgetter('punteggio'),reverse=True)
+lista_giocatori.sort(key=operator.attrgetter('punteggio'),reverse=True)
 
+#scrittura nel file
+with open("punti.txt","w", encoding="utf-8") as f:
+    for g in lista_giocatori:
+        f.write(f"{g.nickname} {g.punteggio}\n")
